@@ -18,13 +18,14 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
   ![image](https://user-images.githubusercontent.com/2664857/149229582-18780783-6d47-4d12-89ab-1898da33e1c7.png) <br />
 4.	For Pi4 B, connect a USB C cable from Pi to PS4
 5.	Power up the PS4. This should also boot up your Pi
-6.	On the PS4 go to Browser and visit http://ip.address.of.your.pi
-7.	Click on the GoldHen button for the version you want to exploit with  
+6.	Use `raspi-config` to expand the filesystem to the capacity of your SD card
+7.	On the PS4 go to Browser and visit http://ip.address.of.your.pi
+8.	Click on the GoldHen button for the version you want to exploit with  
     a. A popup will be thrown saying USB emulation started and wait for ps4 pop up
     ![image](https://user-images.githubusercontent.com/20742243/151671687-3a16a6db-a56e-45d8-bc13-9ff76598949d.png) <br />
     b. Once the USB message disappears, Click ok  
     c.	Gold Hen will load automatically
-8. If you need SSH access, username is `pi` and password is `ps4jb`
+9. If you need SSH access, username is `pi` and password is `ps4jb`
 
 ### Setup - Advanced Method
 1. Install a clean Raspberry Pi OS image to an SD card (Developed and tested on Debian Bullseye)
