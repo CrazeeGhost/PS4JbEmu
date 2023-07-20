@@ -31,11 +31,10 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
 2. Enable USB Gadget Mode on the Pi <br>
    a. Add `dtoverlay=dwc2,dr_mode=peripheral` to the `[all]` section inside `/boot/config.txt`
 3. Install and setup `lighttpd` and `PHP`
-4. Configure `/var/www/html/ps4` as the document root directory for the exploit app <br>
-   a. Make `www-data:www-data` the owner of this directory and change the permissions on it to `755`
+4. Configure `/var/www/html/ps4` as the document root directory for the exploit app
 5. Clone or download the source code from this repo <br>
-   a. Copy the `900N` directory to `/var/www/html/ps4` <br>
-   b. For all files inside the directory make `www-data:www-data` the owner and change permissions to `755`
+   a. Copy all files to `/var/www/html/ps4` <br>
+   b. For `/var/www/html/ps4` and all it's contents make `www-data:www-data` the owner and change permissions to `755`
 7. Set `sudo /sbin/modprobe -r g_mass_storage` to run at every boot via `crontab` or `/etc/rc.local`
 8. Allow the webserver user to run some commands as root without password <br>
    a. Add `www-data ALL = NOPASSWD: /sbin/modprobe, /sbin/reboot, /sbin/shutdown` to your `sudoers` file using `visudo`
