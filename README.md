@@ -36,14 +36,14 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
 5. Install and setup `lighttpd` and `PHP`
 6. Configure `/var/www/html/ps4` as the document root directory for the exploit app (via `lighttpd` configs)
 7. Clone or download the source code from this repo <br>
-   a. `cd /var/www/html/ps4` <br>
-   b. `sudo git clone https://github.com/CrazeeGhost/PS4JbEmu.git .` <br />
-   c. `sudo git config --global --add safe.directory /var/www/html/ps4`
+   a. `cd /home/pi` <br>
+   b. `sudo git clone https://github.com/CrazeeGhost/PS4JbEmu.git` <br />
+   c. `sudo git config --global --add safe.directory /home/pi/PS4JbEmu`
 8. Allow the webserver user to run some commands as root without password <br>
-   a. Add `www-data ALL = NOPASSWD: /sbin/modprobe, /sbin/reboot, /sbin/shutdown /var/www/html/ps4/updateHost.sh, /bin/git` to your `sudoers` file using the `visudo` command
+   a. Add `www-data ALL = NOPASSWD: /sbin/modprobe, /sbin/reboot, /sbin/shutdown, /var/www/html/ps4/updateHost.sh, /bin/rsync, /bin/git` to your `sudoers` file using the `visudo` command
 9. Make the web app accessible to the webserver <br />
-   a. `sudo chmod 755 /var/www/html/ps4/updateHost.sh` <br />
-   b. `sudo runuser -u www-data -- sudo /var/www/html/ps4/updateHost.sh`
+   a. `sudo chmod 755 /home/pi/PS4JbEmu/updateHost.sh` <br />
+   b. `sudo /home/pi/PS4JbEmu/updateHost.sh`
 
 
 Note: `Update Host` button on the web app will not work if you did not follow the directory strcture in the steps above
