@@ -1,4 +1,4 @@
-# PS4JbEmu
+# PS4JbEmU
 
 ## Local PS4 Jailbreak Host with USB emulation
 This project is aimed at setting up a local web host, with USB emulation, on select Raspberry Pi boards that can be used to exploit and jailbreak PS4 consoles running firmware version 9.00. Raspberry Pi Zero W / Pi Zero 2 W / Pi4 B are eligible boards as they support a USB on-the-go (OTG) gadget mode and eliminate the need to manually insert and remove the USB stick required in the exploit process. This project is implemented on a clean Raspberry Pi OS (Debian) install which makes it easier to repurpose the Pi to run additional applications and services on it.<br>
