@@ -31,16 +31,22 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
 1. Install a clean Raspberry Pi OS image to an SD card (Developed and tested on Debian Bullseye)
 2. Enable USB Gadget Mode on the Pi <br>
    a. Add `dtoverlay=dwc2,dr_mode=peripheral` to the `[all]` section inside `/boot/config.txt`
-3. Install and setup `lighttpd` and `PHP`
-4. Configure `/var/www/html/ps4` as the document root directory for the exploit app
-5. Clone or download the source code from this repo <br>
-   a. Copy all files to `/var/www/html/ps4` <br>
-   b. For `/var/www/html/ps4` and all it's contents make `www-data:www-data` the owner and change permissions to `755`
-7. Set `sudo /sbin/modprobe -r g_mass_storage` to run at every boot via `crontab` or `/etc/rc.local`
+3. Prevent the Pi from automatically becoming a USB gadget on every boot <br />
+   a. Add `sudo /sbin/modprobe -r g_mass_storage` to `/etc/rc.local`
+5. Install and setup `lighttpd` and `PHP`
+6. Configure `/var/www/html/ps4` as the document root directory for the exploit app (via `lighttpd` configs)
+7. Clone or download the source code from this repo <br>
+   a. `cd /var/www/html/ps4` <br>
+   b. `sudo git clone https://github.com/CrazeeGhost/PS4JbEmu.git .` <br />
+   c. `sudo git config --global --add safe.directory /var/www/html/ps4`
 8. Allow the webserver user to run some commands as root without password <br>
-   a. Add `www-data ALL = NOPASSWD: /sbin/modprobe, /sbin/reboot, /sbin/shutdown` to your `sudoers` file using `visudo`
+   a. Add `www-data ALL = NOPASSWD: /sbin/modprobe, /sbin/reboot, /sbin/shutdown /var/www/html/ps4/updateHost.sh, /bin/git` to your `sudoers` file using the `visudo` command
+9. Make the web app accessible to the webserver <br />
+   a. `sudo chmod 755 /var/www/html/ps4/updateHost.sh` <br />
+   b. `sudo runuser -u www-data -- sudo /var/www/html/ps4/updateHost.sh`
 
-Note: `Update Host` button on the web app will not work to update the host files unless you modify it or comply with the directory structure it's referencing.
+
+Note: `Update Host` button on the web app will not work if you did not follow the directory strcture in the steps above
 
 ### Credits
 1.	Sleirsgoevy – Webkit, Offline Activator
