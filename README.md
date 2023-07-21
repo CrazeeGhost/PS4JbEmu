@@ -40,7 +40,7 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
    b. `sudo git clone https://github.com/CrazeeGhost/PS4JbEmu.git` <br />
    c. `sudo git config --global --add safe.directory /home/pi/PS4JbEmu`
 8. Allow the webserver user to run some commands as root without password <br>
-   a. Add `www-data ALL = NOPASSWD: /sbin/modprobe, /sbin/reboot, /sbin/shutdown, /var/www/html/ps4/updateHost.sh, /bin/rsync, /bin/git` to your `sudoers` file using the `visudo` command
+   a. Add `www-data ALL = NOPASSWD: /sbin/modprobe, /sbin/reboot, /sbin/shutdown, /var/www/html/ps4/updateHost.sh` to your `sudoers` file using the `visudo` command
 9. Make the web app accessible to the webserver <br />
    a. `sudo chmod 755 /home/pi/PS4JbEmu/updateHost.sh` <br />
    b. `sudo /home/pi/PS4JbEmu/updateHost.sh`
