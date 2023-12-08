@@ -19,7 +19,7 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
 4.	For Pi4 B, connect a USB C cable from Pi to PS4
 5.	Power up the PS4. This should also boot up your Pi
 6.	Use `raspi-config` to expand the filesystem to the capacity of your SD card
-7.	On the PS4 go to Browser and visit http://ip.address.of.your.pi
+7.	On the PS4 go to Browser and visit http://ip.address.of.your.pi/ps4
 8.	Click on the GoldHen button for the version you want to exploit with  
     a. A popup will be thrown saying USB emulation started and wait for ps4 pop up
     ![image](https://user-images.githubusercontent.com/20742243/151671687-3a16a6db-a56e-45d8-bc13-9ff76598949d.png) <br />
