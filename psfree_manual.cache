@@ -95,6 +95,7 @@ pl_wtsb.bin
 relocator.js
 rop.js
 rop_sleirs.js
+script.php
 syscalls.js
 syscalls2.js
 module\chain.mjs
