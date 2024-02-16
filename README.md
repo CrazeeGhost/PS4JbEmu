@@ -19,13 +19,13 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
 4.	For Pi4 B, connect a USB C cable from Pi to PS4
 5.	Power up the PS4. This should also boot up your Pi
 6.	Use `raspi-config` to expand the filesystem to the capacity of your SD card
-7.	On the PS4 go to Browser and visit http://ip.address.of.your.pi/ps4
+7.	On the PS4 go to Browser and visit http://<ip.address.of.your.pi>/ps4
 8.	Click on the GoldHen button for the version you want to exploit with  
     a. A popup will be thrown saying USB emulation started and wait for ps4 pop up
     ![image](https://user-images.githubusercontent.com/20742243/151671687-3a16a6db-a56e-45d8-bc13-9ff76598949d.png) <br />
     b. Once the USB message disappears, Click ok  
     c.	Gold Hen will load automatically
-9. If you need SSH access, username is `pi` and password is `ps4jb`
+9. If you need SSH access, username is `pi` and password is `ps4free`
 
 ### Setup - Advanced Method
 1. Install a clean Raspberry Pi OS image to an SD card (Developed and tested on Debian Bullseye)
@@ -34,22 +34,22 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
 3. Prevent the Pi from automatically becoming a USB gadget on every boot <br />
    a. Add `sudo /sbin/modprobe -r g_mass_storage` to `/etc/rc.local`
 5. Install and setup `lighttpd` and `PHP`
-6. Configure `/var/www/html/ps4` as the document root directory for the exploit app (via `lighttpd` configs)
-7. Clone or download the source code from this repo <br>
+6. Enable fast cgi module for lighttpd
+   a. `sudo lighttpd-enable-mod fastcgi fastcgi-php`
+   b. `sudo systemctl reload lighttpd.service`
+8. Configure `/var/www/html/ps4` as the document root directory for the exploit app (via `lighttpd` configs)
+9. Clone or download the source code from this repo <br>
    a. `cd /home/pi` <br>
-   b. `sudo git clone https://github.com/CrazeeGhost/PS4JbEmu.git` <br />
-   c. `sudo git config --global --add safe.directory /home/pi/PS4JbEmu`
-8. Allow the webserver user to run some commands as root without password <br>
-   a. Add `www-data ALL = NOPASSWD: /sbin/modprobe, /sbin/reboot, /sbin/shutdown, /var/www/html/ps4/updateHost.sh` to your `sudoers` file using the `visudo` command
-9. Make the web app accessible to the webserver <br />
-   a. `sudo chmod 755 /home/pi/PS4JbEmu/updateHost.sh` <br />
-   b. `sudo /home/pi/PS4JbEmu/updateHost.sh`
-
-
-Note: `Update Host` button on the web app will not work if you did not follow the directory strcture in the steps above
+   b. `git clone https://github.com/CrazeeGhost/PS4JbEmu.git` <br />
+10. Allow the webserver user to run modprobe as root without password <br>
+   a. Add `www-data ALL=(ALL) NOPASSWD: /sbin/modprobe` to your sudoers file using the `visudo` command
+11. Make the web app accessible to the webserver (will not work if you did not follow the directory strcture in step 8)<br />
+   a. `cp /home/pi/PS4JbEmu/updateHost.sh /home/pi` <br />
+   b. `sudo chmod 755 /home/pi/updateHost.sh` <br />
+   c. `sudo /home/pi/updateHost.sh`
 
 ### Credits
-1.	Sleirsgoevy – Webkit, Offline Activator
-2.	Chendochap – KeExploit
-3.	Karo Sharifi – Offline Exploit Web Host 
-4.	PaulJenkin – Inspiration for USB Emulation
+1.  Kameleonre_ - Porting PSFree Exploit
+2.	Sleirsgoevy – Webkit, Offline Activator
+3.	Chendochap – KeExploit
+5.	PaulJenkin – Inspiration for USB Emulation
