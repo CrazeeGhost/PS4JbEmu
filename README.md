@@ -47,6 +47,9 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
    a. `cp /home/pi/PS4JbEmu/updateHost.sh /home/pi` <br />
    b. `sudo chmod 755 /home/pi/updateHost.sh` <br />
    c. `sudo /home/pi/updateHost.sh`
+12. (Optional) Enable auto-updates via cron <br />
+   a. `sudo crontab -e` <br />
+   b. `*/30 * * * * /home/pi/updateHost.sh`
 
 ### Credits
 1.  Kameleonre_ - Porting PSFree Exploit
