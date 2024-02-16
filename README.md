@@ -35,7 +35,7 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
    a. Add `sudo /sbin/modprobe -r g_mass_storage` to `/etc/rc.local`
 5. Install and setup `lighttpd` and `PHP`
 6. Enable fast cgi module for lighttpd <br />
-   a. `sudo lighttpd-enable-mod fastcgi fastcgi-php`
+   a. `sudo lighttpd-enable-mod fastcgi fastcgi-php` <br />
    b. `sudo systemctl reload lighttpd.service`
 8. Configure `/var/www/html/ps4` as the document root directory for the exploit app (via `lighttpd` configs)
 9. Clone or download the source code from this repo <br>
