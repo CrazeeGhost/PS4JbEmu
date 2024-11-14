@@ -35,7 +35,7 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
 8. Configure `/var/www/html/ps4` as the document root directory for the exploit app (via `lighttpd` configs)
 9. Clone or download the source code from this repo <br>
    a. `cd /home/pi` <br>
-   b. `git clone -b webkit --single-branch https://github.com/CrazeeGhost/PS4JbEmu.git` <br />
+   b. `git clone -b webkit2 --single-branch https://github.com/CrazeeGhost/PS4JbEmu.git` <br />
    c. `sudo git config --system --add safe.directory /home/pi/PS4JbEmu` <br />
 10. Allow the webserver user to run modprobe as root without password <br>
    a. Add `www-data ALL=(ALL) NOPASSWD: /sbin/modprobe` to your sudoers file using the `visudo` command
