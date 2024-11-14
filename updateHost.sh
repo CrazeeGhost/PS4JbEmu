@@ -13,7 +13,7 @@ if [[ -f "$GOLDHEN" ]]; then
     echo -e "\033[32m✅ Found GoldHen payload in boot: $GOLDHEN\033[0m"
     
     # Copy the found file to the destination path
-    cp "$GOLDHEN" "$GIT_DIR"
+    cp "$GOLDHEN" ${GIT_DIR}/payloads/
     
     # Check if the copy was successful
     if [[ $? -eq 0 ]]; then
