@@ -55,7 +55,7 @@ Developed and Tested on Raspberry Pi 4 B but should work on Pi Zero W / Pi Zero 
     c.	GoldHen will load automatically
 
 ### Credits
-1.  Kameleonre_ - Porting PSFree Exploit
+1.  Karo - Porting PSFree Exploit into host
 2.	Sleirsgoevy – Webkit, Offline Activator
 3.	Chendochap – KeExploit
 5.	PaulJenkin – Inspiration for USB Emulation
