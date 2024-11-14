@@ -10,46 +10,45 @@ git -C "$GIT_DIR" pull
 
 # Check if GoldHen was provided
 if [[ -f "$GOLDHEN" ]]; then
-    echo "Found GoldHen payload in boot: $GOLDHEN"
+    echo -e "\033[32m✅ Found GoldHen payload in boot: $GOLDHEN\033[0m"
     
     # Copy the found file to the destination path
     cp "$GOLDHEN" "$GIT_DIR"
     
     # Check if the copy was successful
     if [[ $? -eq 0 ]]; then
-        echo "$GOLDHEN copied successfully to $GIT_DIR"
+        echo -e "\033[32m✅ $GOLDHEN copied successfully to $GIT_DIR\033[0m"
     else
-        echo "Failed to copy $GOLDHEN"
+        echo -e "\033[31m❌ Failed to copy $GOLDHEN\033[0m"
     fi
 else
-    echo "No GoldHen found in $SOURCE_DIR"
+    echo -e "\033[31m❌ No GoldHen found in $SOURCE_DIR\033[0m"
 fi
 
 # Rsync GIT to WEB
 rsync -a --delete --exclude=".git/" --exclude="updateHost.sh" --exclude="README.md" $GIT_DIR $WEB_DIR
 # Check if the command was successful
 if [[ $? -eq 0 ]]; then
-    echo "$GIT_DIR synced successfully to $WEB_DIR"
+    echo -e "\033[32m✅ $GIT_DIR synced successfully to $WEB_DIR\033[0m"
 else
-    echo "Failed to sync $GIT_DIR to $WEB_DIR"
+    echo -e "\033[31m❌ Failed to sync $GIT_DIR to $WEB_DIR ... Exiting\033[0m"
+    exit 2
 fi
 
 # Change WEB Ownership
 chown -R www-data:www-data ${WEB_DIR}/*
 # Check if the command was successful
 if [[ $? -eq 0 ]]; then
-    echo "Ownership changed successfully for $WEB_DIR"
+    echo -e "\033[32m✅ Ownership changed successfully for $WEB_DIR\033[0m"
 else
-    echo "Could not change Ownership for $WEB_DIR"
+    echo -e "\033[31m❌ Could not change Ownership for $WEB_DIR\033[0m"
 fi
 
 # Make files executable
 chmod 755 ${WEB_DIR}/script.php ${GIT_DIR}/updateHost.sh
 # Check if the command was successful
 if [[ $? -eq 0 ]]; then
-    echo "Files made executable"
+    echo -e "\033[32m✅ Files made executable\033[0m"
 else
-    echo "Could not make files executable"
+    echo -e"\033[31m❌ Could not make files executable\033[0m"
 fi
-
-echo "Execution Complete"
