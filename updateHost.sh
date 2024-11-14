@@ -6,7 +6,7 @@ GOLDHEN="${SOURCE_DIR}/goldhen.bin"
 GIT_DIR="/home/pi/PS4JbEmu/"
 WEB_DIR="/var/www/html/ps4"
 
-# git -C "$GIT_DIR" pull
+git -C "$GIT_DIR" pull
 
 # Check if GoldHen was provided
 if [[ -f "$GOLDHEN" ]]; then
