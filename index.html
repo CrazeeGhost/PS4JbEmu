@@ -1,1559 +1,935 @@
 <html>
 <head>
-<title>PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree</title>
-<link rel="shortcut icon" href="favicon.ico"></link>
-<link rel="stylesheet" href="btn.css">
 <style>
-body{background-color: black; color:white;font-size:20px;text-align:center;margin:0;overflow:hidden;}
-.info{overflow: hidden;position: fixed;position: absolute;top: 45%;left: 50%;font-size: 25px;font-family: sans-serif;color: white;transform: translate(-50%, -50%);}
-</style>
+    html, body{
+margin:auto;
+font-family:sans-serif;
+font-size:20px;
+font-weight:lighter;
+text-align: center;
+color:#FFFFFF;
+background-size:cover;
+overflow: hidden;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+ .content {
+  width:90%;
+  height:15%;
+  margin-left:3.5%;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  margin-top:0%;
+  font-size:25px;
+  text-align:center;
+  border-radius:30px;
+  padding:20px;
+  line-height:12px;
+  position:absolute;bottom:0px;
+ }
+ .title {
+  font-size:40px;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-weight:bolder;
+  margin-bottom:10px;
+ }
+ .yellow {
+  color:yellow;
+ }
+ .hue {
+  color:yellow;
+  padding:10px;
+  border-radius:10px;
+  animation:hue 5s linear infinite;
+  -webkit-animation: hue 5s linear infinite;
+  box-shadow: 0px 0px 50px yellow;
+  color:white;
+  background:rgba(255,255,0,0.4);
+ }
+ .hue:hover{
+  color:yellow;
+  background:transparent;
+ }
+ @keyframes hue{
+ 0%{
+ filter:hue-rotate(0deg);
+ -webkit-filter:hue-rotate(0deg);
+ }
+ 10%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 20%{
+ box-shadow: 1px 1px 50px yellow;
+ }
+ 30%{
+ box-shadow: 1px 0px 50px yellow;
+ }
+ 40%{
+  box-shadow: 1px -1px 50px yellow;
+ }
+ 50%{
+ box-shadow: 0px -1px 50px yellow;
+ }
+ 60%{
+ box-shadow: -1px -1px 50px yellow;
+ }
+ 70%{
+ box-shadow: -1px 0px 50px yellow;
+ }
+ 80%{
+ box-shadow: -1px 1px 50px yellow;
+ }
+ 90%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 100%{
+ filter:hue-rotate(360deg);
+ -webkit-filter:hue-rotate(360deg);
+ }
+ }
+ .text {
+  padding-bottom:50px;
+ }
+  .back {
+   font-size:25px;
+   margin-top:10px;
+   display:block;
+   line-height:55px;
+   width:20%;
+   text-decoration:none;
+   height:50px;
+   background:white;
+   color:black;
+   border-radius:15px;
+  }
+  .back:hover{
+   border:2px solid white;
+   background:transparent;
+   box-sizing:border-box;
+   color:white;
+  }
+ #psip {
+  text-align: center;
+  margin-left: 38%;
+  margin-right: auto;
+  width:15%;
+  display:flex;
+  position: absolute;
+  
+  background: rgba(0, 0, 0, 0.500);
+  border-radius: 2em;
+  border: none;
+  padding: 0.8em;
+  
+  color: #ffffff;
+  padding-left: 1.5em;
+  
+  outline: none;
+  box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%);
+  backdrop-filter: blur(5px);
+}
+/* Modal Content */
+.modal-content {
+  font-family: BFARNAZ;
+  font-size: 18px;
+  position: relative;
+  background-color: #dddddd;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+button {
+            background:rgba(0,0,0,0.5);
+			box-shadow: 0 5px 20px 0 white;
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 200px;
+            height: 43px;            
+            text-align: center;
+}
+button:hover {
+            box-shadow: 0 5px 50px 0 white;
+            color: white;
+            border-radius: 10px;
+			background-color: #0F0F53;
+}
 
+hr {
+padding:0;
+margin:0;
+opacity:0.7;
+}
+
+#progress {
+ font-weight:bold;
+ text-shadow: 4px 4px 4px black;
+
+ font-size:17px;
+}
+.pointer {cursor: pointer;}
+
+h1 {
+text-shadow: 0.1em 0.1em 0.2em black;
+font-size: 25px;
+text-align: center;
+color: white;
+}
+
+.TextCaption{
+display: block;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+a img {
+    display: inline-block;  text-decoration: none;
+}
+
+a {
+    display: inline-block;  text-decoration: none;
+}
+
+a:hover img, a:hover .TextCaption{
+transform: scale(1.1)
+}
+
+    </style>
+<meta charset="utf-8">
+<title>Pi Host with USB Emulation for FW 9.00</title>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js" defer></script>
+<script src="exploit.js" defer></script>
 <script>
-
-//Initialization of variables
-var payloadData = "";
-var array = "";
-var PLfile = "";
-localStorage.setItem("ipaddress","127.0.0.1");
-sessionStorage.setItem("isbinserver","no");
-sessionStorage.setItem("isnetcat","no");
-sessionStorage.setItem("islinux","no");
-sessionStorage.setItem("OOBdone","no");
-sessionStorage.setItem("ismira","no");
-sessionStorage.setItem("isbz2","no");
-
-
-//Functions
-function pldone() 
-{
-  msgs.innerHTML= LoadedMSG;
+function white() {
+document.getElementById("progress").style.color = "white";
+}
+function green() {
+document.getElementById("progress").style.color = "green";
+}
+sessionStorage.Exploit= null;
+function jbdone() {
+sessionStorage.Exploit="yes";
+document.getElementById("progress").style.color = "green";
+window.progress.innerHTML="Jailbreak Done";
+setTimeout(white, 200);
+setTimeout(green, 300);
+setTimeout(white, 500);
+load_pl();
 }
 
-function awaitpl() 
-{
-  msgs.innerHTML= "You can now send payload over netcat port 9020";
+function load_pl() {
+if(out_jb=="AllPL"){setTimeout(load_pocj, 500);} else  if(out_jb=="AllBin"){setTimeout(load_pocB, 500);} else if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
-function jbdone() 
-{
-  mymenu.style.display = "block";
-  msgs.innerHTML= LoadedMSG;
+function allset() {
+window.progress.innerHTML= LoadedMSG
 }
 
-function wk_keep_alive()
+function Binset() {
+window.progress.innerHTML="Payload Loaded. Send payloads to port 9020";
+alert("Payload Loaded. Send payloads to port 9020");
+}
+
+function Mset() {
+window.progress.innerHTML="Payload Loaded. Send payloads to port 9021";
+alert("Payload Loaded. Send payloads to port 9021");
+}
+
+function runScript(what)
 {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', document.location.href, false);
+    xhr.open('GET', what, false);
     xhr.send('');
+    eval.call(window, xhr.responseText);
 }
+
 function print(){}
 
-function getScript(source,callback){var gs=document.createElement('script');gs.src=source;gs.onload=callback;gs.async=false;document.body.appendChild(gs);}
-function loadScript(name)
-{
-	getScript(name,function(){});
+function load_poc2() {
+var payload_buffer = chain.syscall(477, 0x0, 0x300000, 0x7, 0x1000, 0xFFFFFFFF, 0);
+ var payload_loader = p.malloc32(0x1000);
+ var BLDR = payload_loader.backing;
+ BLDR[0]=0x56415741;BLDR[1]=0x83485541;BLDR[2]=0x894818EC;BLDR[3]=0xC748243C;BLDR[4]=0x10082444;BLDR[5]=0x483C2302;BLDR[6]=0x102444C7;BLDR[7]=0x00000000;BLDR[8]=0x000002BF;BLDR[9]=0x0001BE00;BLDR[10]=0xD2310000;BLDR[11]=0x00009CE8;BLDR[12]=0xC7894100;BLDR[13]=0x8D48C789;BLDR[14]=0xBA082474;BLDR[15]=0x00000010;BLDR[16]=0x000095E8;BLDR[17]=0xFF894400;BLDR[18]=0x000001BE;BLDR[19]=0x0095E800;BLDR[20]=0x89440000;BLDR[21]=0x31F631FF;BLDR[22]=0x0062E8D2;BLDR[23]=0x89410000;BLDR[24]=0x2C8B4CC6;BLDR[25]=0x45C64124;BLDR[26]=0x05EBC300;BLDR[27]=0x01499848;BLDR[28]=0xF78944C5;BLDR[29]=0xBAEE894C;BLDR[30]=0x00001000;BLDR[31]=0x000025E8;BLDR[32]=0x7FC08500;BLDR[33]=0xFF8944E7;BLDR[34]=0x000026E8;BLDR[35]=0xF7894400;BLDR[36]=0x00001EE8;BLDR[37]=0x2414FF00;BLDR[38]=0x18C48348;BLDR[39]=0x5E415D41;BLDR[40]=0x31485F41;BLDR[41]=0xC748C3C0;BLDR[42]=0x000003C0;BLDR[43]=0xCA894900;BLDR[44]=0x48C3050F;BLDR[45]=0x0006C0C7;BLDR[46]=0x89490000;BLDR[47]=0xC3050FCA;BLDR[48]=0x1EC0C748;BLDR[49]=0x49000000;BLDR[50]=0x050FCA89;BLDR[51]=0xC0C748C3;BLDR[52]=0x00000061;BLDR[53]=0x0FCA8949;BLDR[54]=0xC748C305;BLDR[55]=0x000068C0;BLDR[56]=0xCA894900;BLDR[57]=0x48C3050F;BLDR[58]=0x006AC0C7;BLDR[59]=0x89490000;BLDR[60]=0xC3050FCA;
+ chain.syscall(74, payload_loader, 0x4000, (0x1 | 0x2 | 0x4));
+ var pthread = p.malloc(0x10); {
+  chain.fcall(window.syscalls[203], payload_buffer, 0x300000);
+  chain.fcall(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader, payload_buffer);
+ }
+ chain.run();
+ sessionStorage.Paload="yes";
+ setTimeout(load_pocl,2000);
 }
 
-//Function to 'Load' the payload file to be send to GoldHEN Bin Server.	
-	var getPayload=function(payload,onLoadEndCallback){
-		var req=new XMLHttpRequest();
-		req.open('GET',payload);
-		req.send();
-		req.responseType="arraybuffer";
-		req.onload=function(event){
-			if(onLoadEndCallback)onLoadEndCallback(req,event);
-		};
-	};
-	
-//Function to 'Send' the payload file to GoldHEN Bin Server using Html POST method. 
-	var sendPayload=function(url,data,onLoadEndCallback){
-		var req=new XMLHttpRequest();
-		req.open("POST",url,true);
-		req.send(data);
-		req.onload=function(event){
-			if(onLoadEndCallback)onLoadEndCallback(req,event);
-		};
-	};
-
-//function to check current status of the GoldHEN Bin Server
-function checkbinserverstatus()
-{
-    var req = new XMLHttpRequest(); 
-	req.open("POST", "http://"+localStorage.ipaddress+":9090/status");
-	req.send();
-	req.onerror = function(){
-		msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>GoldHEN Bin Server Not Detected, Payloads Will Run Via WebKit!!!</h1>";
-		sessionStorage.isbinserver = "no";
-	};
-	req.onload = function(){
-	var responseJson = JSON.parse(req.responseText);
-	if (responseJson.status=="ready"){
-		msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>GoldHEN Bin Server Detected, Payloads Will Run Via Port 9090!!!</h1>";
-		sessionStorage.isbinserver = "yes";
-		}
-	};
-}
-
-//Payloads to be loaded using Sleirsgoevy Style
-function loadPayloadDataSleirs(pl) // preload payload data
-{
-if (sessionStorage.OOBdone != "yes")
-{
-    if (sessionStorage.ismira != "yes" && sessionStorage.isnetcat != "yes")
-    {
-    setTimeout(loadScript("netcat.js")
-     +loadScript("int64.js")
-     +loadScript("rop.js")
-     +loadScript("kexploit.js")
-     +loadScript("exploit.js")
-	 +loadScript("malloc.js")
-	 +loadScript("rop_sleirs.js")
-	 +loadScript("syscalls.js")
-	 +loadScript("syscalls2.js")
-     +loadScript(pl)
-	 +loadScript("jbc_ldr.js")
-     +loadScript("kexploit-launcher.js")
-	 +loadScript("relocator.js"),1500);
-     sessionStorage.islinux = "no";
-     pldone();
-
-    }
-    else
-    {
-    setTimeout(loadScript("netcat.js")
-     +loadScript("int64.js")
-     +loadScript("rop.js")
-     +loadScript("kexploit.js")
-     +loadScript("exploit.js")
-	 +loadScript("malloc.js")
-	 +loadScript("rop_sleirs.js")
-	 +loadScript("syscalls.js")
-	 +loadScript("syscalls2.js")
-     +loadScript(pl)
-	 +loadScript("mira_ldr.js")
-     +loadScript("kexploit-launcher.js")
-	 +loadScript("relocator.js"),1500);
-     sessionStorage.ismira = "no";
-     sessionStorage.isnetcat = "no";
-     pldone();
-    }
-}
-else
-{
-    if (sessionStorage.ismira != "yes" && sessionStorage.isnetcat != "yes")
-    {
-	setTimeout(loadScript("netcat.js")
-	+loadScript("malloc.js")
-	+loadScript("rop_sleirs.js")
-	+loadScript("syscalls.js")
-	+loadScript("syscalls2.js")
-	+loadScript(pl)
-	+loadScript("jbc_ldr.js")
-	+loadScript("relocator.js"),1500);
-    sessionStorage.islinux = "no";
-    pldone();
-    }
-    else
-    {
-    setTimeout(loadScript("netcat.js")
-	+loadScript("malloc.js")
-	+loadScript("rop_sleirs.js")
-	+loadScript("syscalls.js")
-	+loadScript("syscalls2.js")
-	+loadScript(pl)
-	+loadScript("mira_ldr.js")
-	+loadScript("relocator.js"),1500);
-    sessionStorage.ismira = "no";
-    sessionStorage.isnetcat = "no";
-    pldone();
-    }
-}
-}
-
-function loadPayloadData()
-    {
-        if (PLfile)
-	{
-        if (sessionStorage.OOBdone == "yes")
-        {
-        //----------------------------------------------------------------------------------------------
-        //Buffer Array Method By Leeful
-        var req = new XMLHttpRequest();
-        req.responseType = "arraybuffer";
-        req.open('GET',PLfile);
-        req.send();
-        req.onreadystatechange = function () 
-        {
-        if (req.readyState == 4) 
-        {
-        PLD = req.response;
-        var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-        var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-        var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-        var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-        tmp.set(new Uint8Array(req.response), 0);
-        tmp.set(padding, req.response.byteLength);
-        var shellcode = new Uint32Array(tmp.buffer);
-        pl.set(shellcode,0);
-        var pthread = p.malloc(0x10);
-        chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-        pldone();
-        }
-      };
-
-	}
-        else
-        {
-            sessionStorage.isbz2 = "no";
-            setTimeout(PSFreeExec,50);
-        }
-    }
-    }
-
-function loadPayloadDataBz2()
-{
-	if (PLfile)
-	{
-        if (sessionStorage.OOBdone == "yes")
-        {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', PLfile, true);
-            xhr.overrideMimeType('text/plain; charset=x-user-defined');
-            xhr.onload = function(e) {
-            if (this.status == 200) 
-            {
-            let payloadData = Uint8Array.from(xhr.response, c => c.charCodeAt(0));
-            
-            if (payloadData.length > 0)
-		{
-            
-            // Decompress Method By Hippie68
-            if (PLfile.endsWith(".bz2"))
-            {
-            try {
-            payloadData = bzip2.simple(bzip2.array(payloadData));
-            //----------------------------------------------------------------------------------------------
-            //Buffer Array Method By Leeful
-            //Minor mod to load bz2 payloads by kameleon_
-            PLD = payloadData.buffer;
-            var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-            var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-            var padding = new Uint8Array(4 - (payloadData.buffer.byteLength % 4) % 4);
-            var tmp = new Uint8Array(payloadData.buffer.byteLength + padding.byteLength);
-            tmp.set(new Uint8Array(payloadData.buffer), 0);
-            tmp.set(padding, payloadData.buffer.byteLength);
-            var shellcode = new Uint32Array(tmp.buffer);
-            pl.set(shellcode,0);
+function load_pocl() {
+var payload_buffer = chain.syscall(477, 0, 0x300000, 7, 0x1002, -1, 0);
+            var buf = new Uint8Array(1);
+            var buf_addr = p.leakval(buf);
+            var old_buf = p.read8(buf_addr.add32(16));
+            var old_sz = p.read4(buf_addr.add32(24));
+            p.write8(buf_addr.add32(16), payload_buffer);
+            p.write4(buf_addr.add32(24), PLS.length);
+            for(var i = 0; i < PLS.length; i++) buf[i] = PLS[i];
+            p.write8(buf_addr.add32(16), old_buf);
+            p.write4(buf_addr.add32(24), old_sz);
             var pthread = p.malloc(0x10);
             chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-            pldone();
-        
-            } catch (error) {
-            throw error;}
-            }
+            setTimeout(load_pocB,2000);
+}
+function load_pocB(){
+ var req = new XMLHttpRequest();
+ req.responseType = "arraybuffer";
+ req.open('GET', PLfile);
+ req.send();
+ req.onreadystatechange = function () {
+  if (req.readyState == 4) {
+   PLD = req.response;
+   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+   tmp.set(new Uint8Array(req.response), 0);
+   tmp.set(padding, req.response.byteLength);
+   var shellcode = new Uint32Array(tmp.buffer);
+   pl.set(shellcode,0);
+   var pthread = p.malloc(0x10);
+   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+   allset();
+  }
+ };
+}
 
-        }
-		else
-		{
-		   alert("No Payload Data!");
+  function loadFile(fileName) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", fileName, false);
+    xhr.overrideMimeType("text/plain; charset=x-user-defined");
+    xhr.send();
+    let array = Uint8Array.from(xhr.response, c => c.charCodeAt(0));
+    if (fileName.endsWith(".bz2")) {
+      try {
+        PLS = bzip2.simple(bzip2.array(array));
+      } catch(error) {
+        alert(fileName + ": \"" + error + "\"\n");
+        throw error;
+      }
+    }
+    return array;
+  }
+  
+function load_pocj() {
+var payload_buffer2 = chain.syscall(477, 0, 0x300000, 7, 0x1002, -1, 0);
+            var buf = new Uint8Array(1);
+            var buf_addr = p.leakval(buf);
+            var old_buf = p.read8(buf_addr.add32(16));
+            var old_sz = p.read4(buf_addr.add32(24));
+            p.write8(buf_addr.add32(16), payload_buffer2);
+            p.write4(buf_addr.add32(24), PLS.length);
+            for(var i = 0; i < PLS.length; i++) buf[i] = PLS[i];
+            p.write8(buf_addr.add32(16), old_buf);
+            p.write4(buf_addr.add32(24), old_sz);
+            var pthread2 = p.malloc(0x10);
+            chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread2, 0x0, payload_buffer2, 0);
+            allset();
+}
+
+function Linux1N(){
+progress.innerHTML="LinuxLoader 1GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/payload-900-1gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux2N(){
+progress.innerHTML="LinuxLoader 2GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/payload-900-2gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux3N(){
+progress.innerHTML="LinuxLoader 3GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/payload-900-3gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux4N(){
+progress.innerHTML="LinuxLoader 4GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/payload-900-4gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux5N(){
+progress.innerHTML="LinuxLoader 5GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/payload-900-5gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux1(){
+progress.innerHTML="LinuxLoader 1GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/LinuxLoader.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux2(){
+progress.innerHTML="LinuxLoader 2GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/LinuxLoader2gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux3(){
+progress.innerHTML="LinuxLoader 3GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/LinuxLoader3gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux4(){
+progress.innerHTML="LinuxLoader 4GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/LinuxLoader4gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux5(){
+progress.innerHTML="LinuxLoader 5GB loading... please wait";
+LoadedMSG="LinuxLoader Loaded";
+PLfile = "payloads/LinuxLoader5gb.bin";
+out_jb = "Linux";
+var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Linux6(){
+progress.innerHTML="Whos That Southbridge loading... please wait";
+LoadedMSG="Whos That Southbridge Loaded";
+out_jb = "AllBin";
+PLfile = "payloads/wtsb.bin";
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
+}
+
+function Mira(){
+progress.innerHTML="Mira loading... please wait";
+LoadedMSG="Mira Loaded";
+setTimeout(function(){
+runScript('netcat.js');
+runScript('malloc.js');
+runScript('ropb2.js');
+runScript('syscalls.js');
+runScript('syscalls2.js');
+runScript('mira2.js');
+runScript('mira.js');
+runScript('relocator.js');
+}, 1000);
+}
+
+function goldhen23(){
+    progress.innerHTML="Goldhen 2.3 loading... please wait";
+    LoadedMSG="GoldHEN 2.3 Loaded";
+    PLfile = "payloads/goldhen_2.3_900.bin";
+    out_jb = "AllBin";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
+}
+
+function goldhen(){
+    progress.innerHTML="Goldhen loading... please wait";
+    LoadedMSG="GoldHEN Loaded";
+    PLfile = "payloads/goldhen.bin";
+    out_jb = "AllBin";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
+}
+
+function load_PS4Debug(){
+    progress.innerHTML="PS4Debug loading... please wait"; LoadedMSG="PS4Debug Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/ps4debug.bin.bz2');}, 50);
+    out_jb = "AllPL";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_permanentuart(){
+    progress.innerHTML="permanentuart loading... please wait"; LoadedMSG="permanentuart Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/permanentuart.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_App2USB(){
+    progress.innerHTML="app2usb loading... please wait"; LoadedMSG="app2usb Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/app2usb.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_BackupDB(){
+    progress.innerHTML="backupdb loading... please wait"; LoadedMSG="backupdb Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/backupdb.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_pkgb(){
+    progress.innerHTML="PKG Backup loading... please wait"; LoadedMSG="PKG Backup Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/pkg-backup.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_DumperG(){
+    progress.innerHTML="Dumper Game loading... please wait"; LoadedMSG="Dumper Game Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/DumperG.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_DumperU(){
+    progress.innerHTML="Dumper Game Update loading... please wait"; LoadedMSG="Dumper Game Update Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/DumperU.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_DumperMGU(){
+    progress.innerHTML="Dumper Merged Games and Update loading... please wait"; LoadedMSG="Dumper Merged Games and Update Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/DumperMGU.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_DumperSGU(){
+    progress.innerHTML="Dumper Seperate Games and Update loading... please wait"; LoadedMSG="Dumper Seperate Games and Update Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/DumperSGU.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_KernelDumper(){
+    progress.innerHTML="kerneldumper loading... please wait"; LoadedMSG="kerneldumper Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/kerneldumper.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_ModuleDumper(){
+    progress.innerHTML="ModuleDumper loading... please wait"; LoadedMSG="ModuleDumper Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/mdumper.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_RestoreDB(){
+    progress.innerHTML="RestoreDB loading... please wait"; LoadedMSG="RestoreDB Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/restoredb.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_DisableASLR(){
+    progress.innerHTML="DisableASLR loading... please wait"; LoadedMSG="DisableASLR Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/disableaslr.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_DisableUpdates(){
+    progress.innerHTML="DisableUpdates loading... please wait"; LoadedMSG="DisableUpdates Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/disableupdates.bin.bz2');}, 50);
+    out_jb = "AllPL";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_EnableUpdates(){
+    progress.innerHTML="EnableUpdates loading... please wait"; LoadedMSG="EnableUpdates Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/enableupdates.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_EnableBrowser(){
+    progress.innerHTML="EnableBrowser loading... please wait"; LoadedMSG="EnableBrowser Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/enablebrowser.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_ExitIDU(){
+    progress.innerHTML="ExitIDU loading... please wait"; LoadedMSG="ExitIDU Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/exitidu.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+  
+function load_FTP(){
+    progress.innerHTML="FTP loading... please wait"; LoadedMSG="FTP Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/ftp.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+  
+function load_HistoryBlocker(){
+    progress.innerHTML="HistoryBlocker loading... please wait"; LoadedMSG="HistoryBlocker Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/historyblocker.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+  
+function load_RIFRenamer(){
+    progress.innerHTML="RIFRenamer loading... please wait"; LoadedMSG="RIFRenamer Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/rifrenamer.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+  
+function load_Orbis(){
+    progress.innerHTML="Orbis-Toolbox loading... please wait"; LoadedMSG="Orbis-Toolbox Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/Orbis-Toolbox-900.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTAAr0(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/gtava0.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTAAr1(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/gtava1.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTAAr2(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/gtava2.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTAAr3(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/gtava3.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTAL(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/Lamance9.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_expul(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/LushModz-1.0-9.00.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_expul2(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/LushModz-4.0-9.00.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTABQ(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/BeefQueefMod.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTABQ2(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/BeefQueefMod134.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTABQ3(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/BeefQueefMod138.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTAVMB(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/gtavmb127.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_GTAVLTS(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/gtavLTS127.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_Wilde32(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/WildeModz-1.32.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_Wilde33(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/WildeModz-1.33.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_Wilde38(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/WildeModz-1.38.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_Oysters100(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/Oysters1.00.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_Oysters113(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/Oysters1.13.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_Oysters119(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/Oysters1.19.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_Oysters124(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/Oysters1.24.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_Oysters129(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/Oysters1.29.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+
+function load_ToDexE(){
+    progress.innerHTML="ToDEX Enabling... please wait"; LoadedMSG="ToDex Enabled";
+    setTimeout(function(){ let array = loadFile('payloads/todex-enable.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_ToDexD(){
+    progress.innerHTML="ToDEX Disabling... please wait"; LoadedMSG="ToDex Disabled";
+    setTimeout(function(){ let array = loadFile('payloads/todex-disable.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_WebRTE(){
+    progress.innerHTML="WebRTE loading... please wait"; LoadedMSG="WebRTE Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/WebRTE.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function load_fan(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    let array = loadFile("fan" +tempC.value+ ".bin.bz2");
+    out_jb = "AllPL";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function Mloader(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="MiraLoader Loaded. Send payloads to port 9021";
+    setTimeout(function(){ let array = loadFile('payloads/MiraLoader.bin.bz2');}, 50);
+    out_jb = "AllPL";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function Bloader(){
+ progress.innerHTML="Payload loading... please wait";
+ var payload_buffer = chain.syscall(477, 0x0, 0x300000, 0x7, 0x1000, 0xFFFFFFFF, 0);
+ var payload_loader = p.malloc32(0x1000);
+ var BLDR = payload_loader.backing;
+ BLDR[0]=0x56415741;BLDR[1]=0x83485541;BLDR[2]=0x894818EC;BLDR[3]=0xC748243C;BLDR[4]=0x10082444;BLDR[5]=0x483C2302;BLDR[6]=0x102444C7;BLDR[7]=0x00000000;BLDR[8]=0x000002BF;BLDR[9]=0x0001BE00;BLDR[10]=0xD2310000;BLDR[11]=0x00009CE8;BLDR[12]=0xC7894100;BLDR[13]=0x8D48C789;BLDR[14]=0xBA082474;BLDR[15]=0x00000010;BLDR[16]=0x000095E8;BLDR[17]=0xFF894400;BLDR[18]=0x000001BE;BLDR[19]=0x0095E800;BLDR[20]=0x89440000;BLDR[21]=0x31F631FF;BLDR[22]=0x0062E8D2;BLDR[23]=0x89410000;BLDR[24]=0x2C8B4CC6;BLDR[25]=0x45C64124;BLDR[26]=0x05EBC300;BLDR[27]=0x01499848;BLDR[28]=0xF78944C5;BLDR[29]=0xBAEE894C;BLDR[30]=0x00001000;BLDR[31]=0x000025E8;BLDR[32]=0x7FC08500;BLDR[33]=0xFF8944E7;BLDR[34]=0x000026E8;BLDR[35]=0xF7894400;BLDR[36]=0x00001EE8;BLDR[37]=0x2414FF00;BLDR[38]=0x18C48348;BLDR[39]=0x5E415D41;BLDR[40]=0x31485F41;BLDR[41]=0xC748C3C0;BLDR[42]=0x000003C0;BLDR[43]=0xCA894900;BLDR[44]=0x48C3050F;BLDR[45]=0x0006C0C7;BLDR[46]=0x89490000;BLDR[47]=0xC3050FCA;BLDR[48]=0x1EC0C748;BLDR[49]=0x49000000;BLDR[50]=0x050FCA89;BLDR[51]=0xC0C748C3;BLDR[52]=0x00000061;BLDR[53]=0x0FCA8949;BLDR[54]=0xC748C305;BLDR[55]=0x000068C0;BLDR[56]=0xCA894900;BLDR[57]=0x48C3050F;BLDR[58]=0x006AC0C7;BLDR[59]=0x89490000;BLDR[60]=0xC3050FCA;
+ chain.syscall(74, payload_loader, 0x4000, (0x1 | 0x2 | 0x4));
+ var pthread = p.malloc(0x10); {
+  chain.fcall(window.syscalls[203], payload_buffer, 0x300000);
+  chain.fcall(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader, payload_buffer);
+ }
+ chain.run();
+ Binset();
+}
+
+function load_copych(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
+    setTimeout(function(){ let array = loadFile('payloads/CopyCH.bin.bz2');}, 50);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
+}
+
+function allmods(){
+all.style.display = "none";
+gtav.style.display = "block";
 		}
-            }
-            else
-            {
-			alert("Failed to load " + PLfile + " - " + this.status);
-            return;
-            }};
-            xhr.send();
-        }
-        else
+function alldumpers(){
+all.style.display = "none";
+Dumpers.style.display = "block";
+		}
+function alllinux(){
+all.style.display = "none";
+Linuxs.style.display = "block";
+		}
+function alltools(){
+all.style.display = "none";
+Tools.style.display = "block";
+		}
+function backall(){
+all.style.display = "block";
+gtav.style.display = "none";
+Linuxs.style.display = "none";
+Dumpers.style.display = "none";
+Tools.style.display = "none";
+		}
+function webexp() 
         {
-            sessionStorage.isbz2 = "yes";
-            setTimeout(PSFreeExec,50);
+            run();
         }
-    }
-}
-
-//Payloads to be loaded over GoldHEN Bin Server method in BZ2 format
-function LoadpayloadGoldHENBz2(PLfile){ //Loading Payload via Payload Param.
-	   // First do an initial check to see if the BinLoader server is running, ready or busy.
-	   var req = new XMLHttpRequest(); 
-	   req.open("POST", "http://"+localStorage.ipaddress+":9090/status");
-	   req.send();
-	   req.onerror = function(){
-		   alert("Cannot Load Payload Because The BinLoader Server Is Not Running");//<<If server is not running, alert message.
-		   return;
-	   };
-		req.onload = function(){
-			var responseJson = JSON.parse(req.responseText);
-			if (responseJson.status=="ready"){
-		    getPayload(PLfile, function (req) {
-            if ((req.status === 200 || req.status === 304) && req.response) {
-				   //Sending bins via IP POST Method
-                    let payloadData = new Uint8Array(req.response); //Method By Hippie68
-                   // Decompress
-                   if (PLfile.endsWith(".bz2"))
-                   {
-                   try {
-                    payloadData = bzip2.simple(bzip2.array(payloadData));
-                   } catch (error) {
-                   throw error;
-                   }
-                   }
-                   //Send Decompress Payload to GoldHEN Bin Server
-					sendPayload("http://" + localStorage.ipaddress + ":9090", payloadData.buffer, function (req) {
-					   if (req.status === 200) {
-						pldone();
-					   }else{msgs.innerHTML = 'Cannot send payload';return;}
-					})
-				}
-			});
-			}
-			else {
-				alert("Cannot Load Payload Because The BinLoader Server Is Busy");//<<If server is busy, alert message.
-				return;
-			}
-		};
-	}
-
-//Payloads to be loaded over GoldHEN Bin Server method
-function LoadpayloadGoldHEN(PLfile){ //Loading Payload via Payload Param.
-	   // First do an initial check to see if the BinLoader server is running, ready or busy.
-	   var req = new XMLHttpRequest(); 
-	   req.open("POST", "http://"+localStorage.ipaddress+":9090/status");
-	   req.send();
-	   req.onerror = function(){
-		   alert("Cannot Load Payload Because The BinLoader Server Is Not Running");//<<If server is not running, alert message.
-		   return;
-	   };
-		req.onload = function(){
-			var responseJson = JSON.parse(req.responseText);
-			if (responseJson.status=="ready"){
-		    getPayload(PLfile, function (req) {
-				if ((req.status === 200 || req.status === 304) && req.response) {
-				   //Sending bins via IP POST Method
-					sendPayload("http://" + localStorage.ipaddress + ":9090", req.response, function (req) {
-					   if (req.status === 200) {
-						pldone();
-					   }else{msgs.innerHTML = 'Cannot send payload';return;}
-					})
-				}
-			});
-			}
-			else {
-				alert("Cannot Load Payload Because The BinLoader Server Is Busy");//<<If server is busy, alert message.
-				return;
-			}
-		};
-	}
-
-
-function exec_binserver9020()
-{
-    var payload_buffer = chain.syscall(477, 0x0, 0x300000, 0x7, 0x1000, 0xFFFFFFFF, 0);
-    var payload_loader = p.malloc32(0x1000);
-    var loader_writer = payload_loader.backing;
-    loader_writer[0] = 0x56415741;
-    loader_writer[1] = 0x83485541;
-    loader_writer[2] = 0x894818EC;
-    loader_writer[3] = 0xC748243C;
-    loader_writer[4] = 0x10082444;
-    loader_writer[5] = 0x483C2302;
-    loader_writer[6] = 0x102444C7;
-    loader_writer[7] = 0x00000000;
-    loader_writer[8] = 0x000002BF;
-    loader_writer[9] = 0x0001BE00;
-    loader_writer[10] = 0xD2310000;
-    loader_writer[11] = 0x00009CE8;
-    loader_writer[12] = 0xC7894100;
-    loader_writer[13] = 0x8D48C789;
-    loader_writer[14] = 0xBA082474;
-    loader_writer[15] = 0x00000010;
-    loader_writer[16] = 0x000095E8;
-    loader_writer[17] = 0xFF894400;
-    loader_writer[18] = 0x000001BE;
-    loader_writer[19] = 0x0095E800;
-    loader_writer[20] = 0x89440000;
-    loader_writer[21] = 0x31F631FF;
-    loader_writer[22] = 0x0062E8D2;
-    loader_writer[23] = 0x89410000;
-    loader_writer[24] = 0x2C8B4CC6;
-    loader_writer[25] = 0x45C64124;
-    loader_writer[26] = 0x05EBC300;
-    loader_writer[27] = 0x01499848;
-    loader_writer[28] = 0xF78944C5;
-    loader_writer[29] = 0xBAEE894C;
-    loader_writer[30] = 0x00001000;
-    loader_writer[31] = 0x000025E8;
-    loader_writer[32] = 0x7FC08500;
-    loader_writer[33] = 0xFF8944E7;
-    loader_writer[34] = 0x000026E8;
-    loader_writer[35] = 0xF7894400;
-    loader_writer[36] = 0x00001EE8;
-    loader_writer[37] = 0x2414FF00;
-    loader_writer[38] = 0x18C48348;
-    loader_writer[39] = 0x5E415D41;
-    loader_writer[40] = 0x31485F41;
-    loader_writer[41] = 0xC748C3C0;
-    loader_writer[42] = 0x000003C0;
-    loader_writer[43] = 0xCA894900;
-    loader_writer[44] = 0x48C3050F;
-    loader_writer[45] = 0x0006C0C7;
-    loader_writer[46] = 0x89490000;
-    loader_writer[47] = 0xC3050FCA;
-    loader_writer[48] = 0x1EC0C748;
-    loader_writer[49] = 0x49000000;
-    loader_writer[50] = 0x050FCA89;
-    loader_writer[51] = 0xC0C748C3;
-    loader_writer[52] = 0x00000061;
-    loader_writer[53] = 0x0FCA8949;
-    loader_writer[54] = 0xC748C305;
-    loader_writer[55] = 0x000068C0;
-    loader_writer[56] = 0xCA894900;
-    loader_writer[57] = 0x48C3050F;
-    loader_writer[58] = 0x006AC0C7;
-    loader_writer[59] = 0x89490000;
-    loader_writer[60] = 0xC3050FCA;
-    chain.syscall(74, payload_loader, 0x4000, (0x1 | 0x2 | 0x4));
-    var pthread = p.malloc(0x10);
-    //
-    {
-        chain.fcall(window.syscalls[203], payload_buffer, 0x300000);
-        chain.fcall(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader, payload_buffer);
-    }
-    chain.run();
-    sessionStorage.isnetcat = "no";
-    awaitpl();
-}
-
-function load_binserver9021()
-{
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading NetCat Bin Server Port 9021!!!</h1>";
-LoadedMSG="You Can Send Now Payloads Via Netcat To Port 9021";
-PLfile = "payloads/pl_mira_ldr.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    sessionStorage.isnetcat = "yes";
-    loadPayloadDataSleirs("");
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_binserver9020()
-{
-    if (sessionStorage.isbinserver == "no")
-    {
-    msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading NetCat Bin Server Port 9020!!!</h1>";
-    if (sessionStorage.OOBdone == "yes")
-    {
-    
-       exec_binserver9020();
-    }
-    else
-    {
-        sessionStorage.isnetcat = "yes";
-        setTimeout(PSFreeExec,50);
-        
-    }    
-}
-else
-{
-    if (confirm("Netcat 9020 cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit!?")) 
-    {
-        msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading NetCat Bin Server Port 9020!!!</h1>";
-        sessionStorage.isnetcat = "yes";
-        setTimeout(PSFreeExec,50);
-    }
-}
-    
-}
-
-
-function load_mainmenu(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Going to Main Menu!!!</h1>";
-var link = document.createElement('a');
-document.body.appendChild(link);
-link.href = '../index.html';
-link.click();  
-}
-
-function load_goldhenbeta(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading GoldHEN. Please wait ...</h1>";
-LoadedMSG="GoldHEN Loaded";
-PLfile ="payloads/goldhen.bin";
-
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_goldhen23(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading GoldHEN v2.3 Please wait ...</h1>";
-LoadedMSG="GoldHEN v2.3 Loaded";
-PLfile ="payloads/pl_goldhen23.bin";
-
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_mira(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Mira 9.00. Please wait ...</h1>";
-LoadedMSG="Mira 9.00 Loaded";
-PLfile ="pl_mira.js";
-sessionStorage.ismira = "yes";
-loadPayloadDataSleirs(PLfile);
-}
-
-function load_webactivator(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSN Account Offline Web Activator. Please wait ...</h1>";
-var link = document.createElement('a');
-document.body.appendChild(link);
-link.href = '900.html';
-link.click();
-}
-
-function load_pkg_backup(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PKG-BackUP v1.1. Please wait ...</h1>";
-LoadedMSG="PKG-BackUP v1.1 Loaded";
-PLfile = "payloads/pl_pkg_backup.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_orbistoolbox(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Orbis Tool Box v1190. Please wait ...</h1>";
-LoadedMSG="Orbis Tool Box v1190 Loaded";
-PLfile = "payloads/pl_OrbisToolbox.bin";
-
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_disableupdates(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Disable-Updates. Please wait ...</h1>";
-LoadedMSG="Disable-Updates Loaded";
-PLfile = "payloads/pl_disableupdates.bin";
-
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_enableupdates(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Enable-Updates. Please wait ...</h1>";
-LoadedMSG="Enable-Updates Loaded";
-PLfile = "payloads/pl_enableupdates.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_backup(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading DB-Backup. Please wait ...</h1>";
-LoadedMSG="DB-Backup Loaded";
-PLfile = "payloads/pl_backup.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_app2usb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading App-To-Usb. Please wait ...</h1>";
-LoadedMSG="App-To-Usb Loaded";
-PLfile = "payloads/pl_app2usb.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_dumper()
-{
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading App Dumper. Please wait ...</h1>";
-LoadedMSG="App Dumper Loaded";
-PLfile = "payloads/pl_appdumper.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    if (confirm(PLfile + " " +  "cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit?")) 
-    {
-        loadPayloadData();
-        
-    }
-}
-}
-
-function load_exitidu(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exitidu. Please wait ...</h1>";
-LoadedMSG="Exitidu Loaded";
-PLfile = "payloads/pl_exitidu.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_rifrenamer(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Rifrenamer. Please wait ...</h1>";
-LoadedMSG="Rifrenamer Loaded";
-PLfile = "payloads/pl_rifrenamer.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_enablebrowser(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Enable-Browser. Please wait ...</h1>";
-LoadedMSG="Enable-Browser Loaded";
-PLfile = "payloads/pl_enablebrowser.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_ftp(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Ftp. Please wait ...</h1>";
-LoadedMSG="Ftp Loaded";
-PLfile = "payloads/pl_ftp.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_historyblocker()
-{
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading History-Blocker. Please wait ...</h1>";
-LoadedMSG="History-Blocker Loaded";
-PLfile = "payloads/pl_historyblocker.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    if (confirm(PLfile + " " +  "cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit?")) 
-    {
-        loadPayloadData();
-    }
-}
-}
-
-function load_kerneldumper(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Kernel-Dumper. Please wait ...</h1>";
-LoadedMSG="Kernel-Dumper Loaded";
-PLfile = "payloads/pl_kerneldumper.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_moduledumper(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Kernel Module-Dumper. Please wait ...</h1>";
-LoadedMSG="Kernel Module-Dumper Loaded";
-PLfile = "payloads/pl_moduledumper.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_uart(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Permanent UART. Please wait ...</h1>";
-LoadedMSG="Permanent UART Loaded";
-PLfile = "payloads/pl_permanentuart.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-/////////////LINUX NAZKY
-function load_Linux1gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading NazkyYT Linux 1gb. Please wait ...</h1>";
-LoadedMSG="NazkyYT Linux 1gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_LinuxLoader.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_LinuxLoader.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_Linux2gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading NazkyYT Linux 2gb. Please wait ...</h1>";
-LoadedMSG="NazkyYT Linux 2gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_LinuxLoader2gb.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_LinuxLoader2gb.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_Linux3gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading NazkyYT Linux 3gb. Please wait ...</h1>";
-LoadedMSG="NazkyYT Linux 3gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_LinuxLoader3gb.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_LinuxLoader3gb.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_Linux4gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading NazkyYT Linux 4gb. Please wait ...</h1>";
-LoadedMSG="NazkyYT Linux 4gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_LinuxLoader4gb.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_LinuxLoader4gb.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_Linux5gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading NazkyYT Linux 5gb. Please wait ...</h1>";
-LoadedMSG="NazkyYT Linux 5gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_LinuxLoader5gb.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_LinuxLoader5gb.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-/////////////LINUX PSXITA
-function load_psxita_Linux1gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita Linux 1gb. Please wait ...</h1>";
-LoadedMSG="PSXita Linux 1gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_psxita_LinuxLoader.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_psxita_LinuxLoader.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_psxita_Linux2gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita Linux 2gb. Please wait ...</h1>";
-LoadedMSG="PSXita Linux 2gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_psxita_LinuxLoader2gb.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_psxita_LinuxLoader2gb.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_psxita_Linux3gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita Linux 3gb. Please wait ...</h1>";
-LoadedMSG="PSXita Linux 3gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_psxita_LinuxLoader3gb.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_psxita_LinuxLoader3gb.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_psxita_Linux4gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita Linux 4gb. Please wait ...</h1>";
-LoadedMSG="PSXita Linux 4gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_psxita_LinuxLoader4gb.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_psxita_LinuxLoader4gb.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_psxita_Linux5gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita Linux 5gb. Please wait ...</h1>";
-LoadedMSG="PSXita Linux 5gb Loaded";
-sessionStorage.islinux = "yes";
-
-if (sessionStorage.isbinserver == "no")
-{
-    PLfile = "pl_psxita_LinuxLoader5gb.js";
-    loadPayloadDataSleirs(PLfile);
-}
-else
-{
-    PLfile = "payloads/pl_psxita_LinuxLoader5gb.bin";
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-/////////////LINUX PSXITA FOR PRO CONSOLES
-function load_psxita_pro_Linux1gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita-PRO Linux 1gb. Please wait ...</h1>";
-LoadedMSG="PSXita-PRO Linux 1gb Loaded";
-sessionStorage.islinux = "yes";
-PLfile = "pl_psxita_pro_1gb.js";
-loadPayloadDataSleirs(PLfile);
-}
-
-function load_psxita_pro_Linux2gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita-PRO Linux 2gb. Please wait ...</h1>";
-LoadedMSG="PSXita-PRO Linux 2gb Loaded";
-sessionStorage.islinux = "yes";
-PLfile = "pl_psxita_pro_2gb.js";
-loadPayloadDataSleirs(PLfile);
-}
-
-function load_psxita_pro_Linux3gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita-PRO Linux 3gb. Please wait ...</h1>";
-LoadedMSG="PSXita-PRO Linux 3gb Loaded";
-sessionStorage.islinux = "yes";
-PLfile = "pl_psxita_pro_3gb.js";
-loadPayloadDataSleirs(PLfile);
-}
-
-function load_psxita_pro_Linux4gb(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading PSXita-PRO Linux 4gb. Please wait ...</h1>";
-LoadedMSG="PSXita-PRO Linux 4gb Loaded";
-sessionStorage.islinux = "yes";
-PLfile = "pl_psxita_pro_4gb.js";
-loadPayloadDataSleirs(PLfile);
-}
-
-function load_whos_southbridge(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Whos That South-Bridge v2 . Please wait ...</h1>";
-LoadedMSG="Whos That South-Bridge v2 Loaded";
-PLfile = "payloads/pl_wtsb.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_ps4debug(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading CTN Ps4Debug v1.0.15. Please wait ...</h1>";
-LoadedMSG="CTN Ps4Debug v1.0.15 Loaded";
-PLfile = "payloads/pl_ps4debug.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_restore(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading DB-Restore. Please wait ...</h1>";
-LoadedMSG="DB-Restore Loaded";
-PLfile = "payloads/pl_restore.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_todex(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Enable-Dex. Please wait ...</h1>";
-LoadedMSG="ToDex Loaded";
-PLfile = "payloads/pl_todex.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_webrte(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading WebRTE. Please wait ...</h1>";
-LoadedMSG="WebRTE Loaded";
-PLfile = "payloads/pl_webrte.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_disableaslr(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Disable-ASLR. Please wait ...</h1>";
-LoadedMSG="Disable-ASLR Loaded";
-PLfile = "payloads/pl_disableaslr.bin";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadData();
-}
-else
-{
-    LoadpayloadGoldHEN(PLfile);
-}
-}
-
-function load_gtavarabicguy100(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading ArabicGuy 1.00. Please wait ...</h1>";
-LoadedMSG="ArabicGuy 1.00 Loaded";
-PLfile = "payloads/pl_ArabicGuy100.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavarabicguy127(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading ArabicGuy 1.27. Please wait ...</h1>";
-LoadedMSG="ArabicGuy 1.27 Loaded";
-PLfile = "payloads/pl_ArabicGuy127.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavarabicguy132(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading ArabicGuy 1.32. Please wait ...</h1>";
-LoadedMSG="ArabicGuy 1.32 Loaded";
-PLfile = "payloads/pl_ArabicGuy132.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavarabicguy133(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading ArabicGuy 1.33. Please wait ...</h1>";
-LoadedMSG="ArabicGuy 1.33 Loaded";
-PLfile = "payloads/pl_ArabicGuy133.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavbeefqueef133(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading BeefQueefMod 1.33. Please wait ...</h1>";
-LoadedMSG="BeefQueefMod 1.33 Loaded";
-PLfile = "payloads/pl_BeefQueefMod133.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavbeefqueef134(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading BeefQueefMod 1.34. Please wait ...</h1>";
-LoadedMSG="BeefQueefMod 1.34 Loaded";
-PLfile = "payloads/pl_BeefQueefMod134.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavbeefqueef138(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading BeefQueefMod 1.38 Thief-Edition. Please wait ...</h1>";
-LoadedMSG="BeefQueefMod 1.38 Thief-Edition Loaded";
-PLfile = "payloads/pl_BeefQueefMod138.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavbeefqueef146(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading BeefQueefMod 1.46. Please wait ...</h1>";
-LoadedMSG="BeefQueefMod 1.46 Loaded";
-PLfile = "payloads/pl_BeefQueefMod146.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavbeefqueef147(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading BeefQueefMod 1.47. Please wait ...</h1>";
-LoadedMSG="BeefQueefMod 1.47 Loaded";
-PLfile = "payloads/pl_BeefQueefMod147.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavexpulsion138(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Expulsion V4.0 Mod Menu For GTAV v1.38. Please wait ...</h1>";
-LoadedMSG="Expulsion V4.0 Mod Menu For GTAV v1.38 Loaded";
-PLfile = "payloads/pl_LushModz40_138.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavlamance138(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Lamance v0.9 Mod Menu For GTAV v1.38. Please wait ...</h1>";
-LoadedMSG="Lamance v0.9 Mod Menu For GTAV v1.38";
-PLfile = "payloads/pl_lamance.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavwildemodz132(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Wilde Modz 1.3 Menu For GTAV Update v1.32. Please wait ...</h1>";
-LoadedMSG="Wilde Modz 1.3 Menu For GTAV Update v1.32 Loaded";
-PLfile = "payloads/pl_WildeModz_132.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavwildemodz133(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Wilde Modz 1.3 Menu For GTAV Update v1.33. Please wait ...</h1>";
-LoadedMSG="Wilde Modz 1.3 Menu For GTAV Update v1.33 Loaded";
-PLfile = "payloads/pl_WildeModz_133.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavwildemodz138(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Wilde Modz 1.7 Menu For GTAV Update v1.38. Please wait ...</h1>";
-LoadedMSG="Wilde Modz 1.7 Menu For GTAV Update v1.38 Loaded";
-PLfile = "payloads/pl_WildeModz_138.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavwildemodz146(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Wilde Modz Menu For GTAV Update v1.46. Please wait ...</h1>";
-LoadedMSG="Wilde Modz Menu For GTAV Update v1.46 Loaded";
-PLfile = "payloads/pl_WildeModz_146.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_gtavwildemodz147(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Wilde Modz Menu For GTAV Update v1.47. Please wait ...</h1>";
-LoadedMSG="Wilde Modz Menu For GTAV Update v1.47 Loaded";
-PLfile = "payloads/pl_WildeModz_147.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    LoadpayloadGoldHENBz2(PLfile);
-}
-}
-
-function load_rdr2_100()
-{
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Read Dead Redemption II Oysters Mod v1.00. Please wait ...</h1>";
-LoadedMSG="Read Dead Redemption II Mod v1.00 Loaded";
-PLfile = "payloads/pl_rdr2_100.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    if (confirm(PLfile + " " +  "cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit?")) 
-    {
-        loadPayloadDataBz2();
-    }
-}
-
-}
-
-function load_rdr2_113()
-{
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Read Dead Redemption II Oysters Mod v1.13. Please wait ...</h1>";
-LoadedMSG="Read Dead Redemption II Mod v1.13 Loaded";
-PLfile = "payloads/pl_rdr2_113.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    if (confirm(PLfile + " " +  "cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit?")) 
-    {
-        loadPayloadDataBz2();
-    }
-}
-}
-
-function load_rdr2_119(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Read Dead Redemption II Oysters Mod v1.19. Please wait ...</h1>";
-LoadedMSG="Read Dead Redemption II Mod v1.19 Loaded";
-PLfile = "payloads/pl_rdr2_119.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    if (confirm(PLfile + " " +  "cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit?")) 
-    {
-        loadPayloadDataBz2();
-    }
-}
-}
-
-function load_rdr2_124(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Read Dead Redemption II Oysters Mod v1.24. Please wait ...</h1>";
-LoadedMSG="Read Dead Redemption II Mod v1.24 Loaded";
-PLfile = "payloads/pl_rdr2_124.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    if (confirm(PLfile + " " +  "cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit?")) 
-    {
-        loadPayloadDataBz2();
-    }
-}
-}
-
-function load_rdr2_129()
-{
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Read Dead Redemption II Oysters Mod v1.29. Please wait ...</h1>";
-LoadedMSG="Read Dead Redemption II Mod v1.29 Loaded";
-PLfile = "payloads/pl_rdr2_129.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    if (confirm(PLfile + " " +  "cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit?")) 
-    {
-        loadPayloadDataBz2();
-    }
-}
-}
-
-function load_rdr2_nb_129()
-{
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Read Dead Redemption II North Beta Mod v1.29. Please wait ...</h1>";
-LoadedMSG="Read Dead Redemption II North Beta Mod v1.29 Loaded";
-PLfile = "payloads/pl_NorthBeta011.bin.bz2";
-if (sessionStorage.isbinserver == "no")
-{
-    loadPayloadDataBz2();
-}
-else
-{
-    if (confirm(PLfile + " " +  "cannot be launched using GoldHEN Bin Server. Do you want to load via WebKit?")) 
-    {
-        loadPayloadDataBz2();
-    }
-}
-}
 </script>
-
-<script>
-
-function PSFreeExec() 
-{
-import('./alert.mjs');
-}
-</script>
-<script src="./int64.js"></script>
-<script src="./rop.js"></script>
-<script src="./kexploit.js"></script>
-
 </head>
-
-<body onload="checkbinserverstatus()">
-    <h1 id=msgs style='font-size:25px;text-align:center;color:white'>PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree</h1>
-    <div id=mymenu style="text-align:center;">
-      <div text-align= center>Pass = <span id=passCounter></span>&nbsp;&nbsp;:&nbsp;&nbsp;Fail = <span id=failCounter></span></div>
-      <div style="width:100%;font-size:20px;color:white">
-      PS4 Firmware <span id="PS4fw"></span></div>
-      <div id="pldmenu" style=font-size:16px>
-      <br>
-      <div style=font-size:16px>BIN LOADER</div>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Receives .Bin payloads on port 9020 via NetCat'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_binserver9020(); return false">Binloader-9020</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Receives .Bin payloads on port 9021 via NetCat'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_binserver9021(); return false">Binloader-9021</button>
-      <br>
-      <div style=font-size:16px>GOLDHEN / MIRA</div>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='GoldHEN - By SiSTRo'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_goldhenbeta(); return false">GoldHEN</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='GoldHEN v2.3 - By SiSTRo'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_goldhen23(); return false">GoldHEN v2.3</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Mira For 9.00 - By Sleirsgoevy'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_mira(); return false">Mira 9.00</button>
-      <br>
-      <div style=font-size:16px>PAYLOADS</div>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Modded Version of App Dumper to Backup PKG files to External HDD  / 9.00 Mod by Kameleon'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_pkg_backup(); return false">PKG-BackUp v1.1</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Orbis Tool Box v1190 - By OSM'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_orbistoolbox(); return false">Orbis-Tool-Box</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='App Dumper Only v1.8 - Original Version By xVortex / 9.00 Port Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_dumper(); return false">App-Dumper</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Disable-Updates v1.0 - By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_disableupdates(); return false">Disable-Updates</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Enable-Updates v1.0 - By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_enableupdates(); return false">Enable-Updates</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Enable Browser / 9.00 Port Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_enablebrowser(); return false">Enable-Browser</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Exit IDU / 9.00 Port Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_exitidu(); return false">Exit-IDU</button>
-    <br><br>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Rifrenamer / 9.00 Port Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_rifrenamer(); return false">Rif-Renamer</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Ftp v1.08a - Original Version By xVortex / Mod By Hippie68'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_ftp(); return false">Ftp-Server-1.08a</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='History-Blocker - v2.0 Original Version By Stooged / 9.00 Port By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_historyblocker(); return false">History-Blocker</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Kernel-Dumper - v1.0 Original Version By Eversion / 9.00 Port By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_kerneldumper(); return false">Kernel-Dumper</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='PSN Account Offline Web Activator - By Sleirsgoevy'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_webactivator(); return false">Web-Offline-Activator</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Ps4Debug v1.0.15 - By CTN123'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_ps4debug(); return false">Ps4Debug v1.0.15</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='DB-Backup v1.0 - By Leeful / 9.00 Port By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_backup(); return false">DB-Backup</button>
-    <br><br>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='App-2-Usb - Original Version By Stooged / 9.00 Port By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_app2usb(); return false">App-2-Usb</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='DB-Restore v1.0 - By Leeful / 9.00 Port Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_restore(); return false">DB-Restore</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='To-Dex v1.0 - By notzecoxao'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_todex(); return false">To-Dex</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='WebRTE v1.0 - By PS4 Trainer'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_webrte(); return false">WebRTE</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Permanent UART - 9.00 Port By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_uart(); return false">Permanent-UART</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Disable ASLR - 9.00 Port By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_disableaslr(); return false">Disable-ASLR</button>
-    <button class="btnkme" onMouseOver="msgs.innerHTML='Kernel-Module Dumper -  9.00 Port By Al Azif'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_moduledumper(); return false">Kernel-Module-Dumper</button>
-    </div>
-    <br><br>
-    <a id="linuxl" ><button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loaders Payloads'" ; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" type="button">Linux Vram Payloads</button></a>
-    <div id="linuxlJ" style="display: none;">
-      <br>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Whos that South-Bridge (Aeolia, Belize, Baikal) - 9.00 Port By OrbisUnjailed'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_whos_southbridge(); return false">Whos that South-Bridge</button>
-      <br><br>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 1GB - 9.00 Port By NazkyYT'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_Linux1gb(); return false">NazkyYT Linux 1GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 2GB - 9.00 Port By NazkyYT'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_Linux2gb(); return false">NazkyYT Linux 2GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 3GB - 9.00 Port By NazkyYT'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_Linux3gb(); return false">NazkyYT Linux 3GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 4GB - 9.00 Port By NazkyYT'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_Linux4gb(); return false">NazkyYT Linux 4GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 5GB - 9.00 Port By NazkyYT'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_Linux5gb(); return false">NazkyYT Linux 5GB Vram</button>
-      <br><br>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 1GB - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_Linux1gb(); return false">PSXita Linux 1GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 2GB - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_Linux2gb(); return false">PSXita Linux 2GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 3GB - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_Linux3gb(); return false">PSXita Linux 3GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 4GB - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_Linux4gb(); return false">PSXita Linux 4GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 5GB - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_Linux5gb(); return false">PSXita Linux 5GB Vram</button>
-      <br><br>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 1GB For Pro Consoles - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_pro_Linux1gb(); return false">PSXita-PRO Linux 1GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 2GB For Pro Consoles - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_pro_Linux2gb(); return false">PSXita-PRO Linux 2GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 3GB For Pro Consoles - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_pro_Linux3gb(); return false">PSXita-PRO Linux 3GB Vram</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Linux Vram Loader 4GB For Pro Consoles - 9.00 Port By PSXita'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_psxita_pro_Linux4gb(); return false">PSXita-PRO Linux 4GB Vram</button>
-    </div>
-    <a id="gtavl" ><button class="btnkme" onMouseOver="msgs.innerHTML='Grand Theft Auto V Mod Menu Payloads'" ; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" type="button">GTA V Mod Payloads</button></a>
-    <div id="gtavlJ" style="display: none;">
-      <button class="btnkme" onMouseOver="msgs.innerHTML='ArabicGuy For GTA V Update v1.00 - By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavarabicguy100(); return false">ArabicGuy GTAV v1.00</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='ArabicGuy For GTA V Update v1.27 - By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavarabicguy127(); return false">ArabicGuy GTAV v1.27</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='ArabicGuy For GTA V Update v1.32 - By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavarabicguy132(); return false">ArabicGuy GTAV v1.32</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='ArabicGuy For GTA V Update v1.33 - By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavarabicguy133(); return false">ArabicGuy GTAV v1.33</button>
-      <br><br>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='BeefQueefMod For GTA V Update v1.33 - By GraFfiX'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavbeefqueef133(); return false">BeefQueefMod - GTAV v1.33</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='BeefQueefMod For GTA V Update v1.34 - By GraFfiX'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavbeefqueef134(); return false">BeefQueefMod - GTAV v1.34</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='BeefQueefMod For GTA V Update v1.38 - By GraFfiX'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavbeefqueef138(); return false">BeefQueefMod - GTAV v1.38</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='BeefQueefMod For GTA V Update v1.46 - By GraFfiX'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavbeefqueef146(); return false">BeefQueefMod - GTAV v1.46</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='BeefQueefMod For GTA V Update v1.47 - By GraFfiX'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavbeefqueef147(); return false">BeefQueefMod - GTAV v1.47</button>
-      <br><br>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='WildeModz v1.2 For GTA V Update v1.32 - By Wilde Modz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavwildemodz132(); return false">WildeModz - GTAV v1.32</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='WildeModz v1.2 For GTA V Update v1.33 - By Wilde Modz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavwildemodz133(); return false">WildeModz - GTAV v1.33</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='WildeModz v1.7 For GTA V Update v1.38 - By Wilde Modz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavwildemodz138(); return false">WildeModz - GTAV v1.38</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='WildeModz For GTA V Update v1.46 - By Wilde Modz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavwildemodz146(); return false">WildeModz - GTAV v1.46</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='WildeModz For GTA V Update v1.47 - By Wilde Modz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavwildemodz147(); return false">WildeModz - GTAV v1.47</button>
-      <br><br>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Expulsion Mod Menu v4.0 For GTA V Update v1.38 - By LushModz'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavexpulsion138(); return false">Expulsion Mod v4.0 GTAV v1.38</button>
-      <button class="btnkme" onMouseOver="msgs.innerHTML='Lamance v0.9 For GTA V Update v1.38 - By David133Hax'"; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" onclick="load_gtavlamance138(); return false">Lamance v0.9 - GTAV v1.38</button>
-    </div>
-    <a id="rdr2l" ><button class="btnkme" onMouseOver="msgs.innerHTML='Red Dead Redemption II Mod Menu Payloads'" ; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" type="button">RDR II Mod Payloads</button></a>
-    <div id="rdr2lJ" style="display: none;">
-        <button class="btnkme" onMouseOver="msgs.innerHTML='Red Dead Redemption II Oysters Mod v1.3.8 For Update v1.00 -  By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='Kameleon 900FW Exploit Host (Auto Method) Full'" onclick="load_rdr2_100(); return false">RDR II Oysters v1.00</button>
-        <button class="btnkme" onMouseOver="msgs.innerHTML='Red Dead Redemption II Oysters Mod v1.3.8 For Update v1.13 - By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='Kameleon 900FW Exploit Host (Auto Method) Full'" onclick="load_rdr2_113(); return false">RDR II Oysters v1.13</button>
-        <button class="btnkme" onMouseOver="msgs.innerHTML='Red Dead Redemption II Oysters Mod v1.3.8 For Update v1.19 - By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='Kameleon 900FW Exploit Host (Auto Method) Full'" onclick="load_rdr2_119(); return false">RDR II Oysters v1.19</button>
-        <button class="btnkme" onMouseOver="msgs.innerHTML='Red Dead Redemption II Oysters Mod v1.3.8 For Update v1.24 - By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='Kameleon 900FW Exploit Host (Auto Method) Full'" onclick="load_rdr2_124(); return false">RDR II Oysters v1.24</button>
-        <button class="btnkme" onMouseOver="msgs.innerHTML='Red Dead Redemption II Oysters Mod v1.3.8 For Update v1.29 - By RF0oDxM0Dz'"; onmouseout="msgs.innerHTML='Kameleon 900FW Exploit Host (Auto Method) Full'" onclick="load_rdr2_129(); return false">RDR II Oysters v1.29</button>
-        <br><br>
-        <button class="btnkme" onMouseOver="msgs.innerHTML='Red Dead Redemption II North Beta Mod v0.11 For Update v1.29 - By David133Hax'"; onmouseout="msgs.innerHTML='Kameleon 900FW Exploit Host (Auto Method) Full'" onclick="load_rdr2_nb_129(); return false">RDR II North Beta Mod v1.29</button>
-      </div>
-    <div id="Backl" style="display: none;">
-      <br>
-      <br>
-      <a ><button class="btnkme" onMouseOver="msgs.innerHTML='Go Back'" ; onmouseout="msgs.innerHTML='PS4 9.00 Firmware Jailbreak & USB Emulator for Raspberry Pi using PSFree'" type="button">Back</button></a>
-    </div>
-    <br>
-    <h1 style="text-align:center;font-size:25px;color:white">Credits - Kameleonre_, abc[psfree author], Theflow0, Znullptr, ChendoChap, Specter, Sleirsgoevy, SiSTRo, Al-Azif, PRB, Leeful</h1>
-    </div>
-
-    <script>
-    var UA = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple')).replace("layStation 4/","");
-    if (UA == "9.00"){PS4fw.innerHTML="v"+UA+" Detected"};if(UA != "9.00"){PS4fw.innerHTML="Spoofed To v"+UA};
-    </script>
-
-    <script>
-    if (localStorage.passcount == null || localStorage.passcount == undefined) localStorage.passcount=0;
-     if (localStorage.passCounter == null || localStorage.passCounter == undefined ){
-      passCounter.innerHTML=localStorage.passcount;}
-    if (localStorage.failcount == null || localStorage.failcount == undefined) localStorage.failcount=0;
-     if (localStorage.failCounter == null || localStorage.failCounter == undefined ){
-      failCounter.innerHTML=localStorage.failcount;}
-    </script>
-
-    <script> //Organize more the payloads menu Method By NazkyYT Modded By Kameleon_
-      var GBl = document.getElementById("Backl");
-      var plmenu = document.getElementById("pldmenu");
-      var linuxl = document.getElementById("linuxl");
-      var linuxlJ = document.getElementById("linuxlJ");
-      var gtavl = document.getElementById("gtavl");
-      var gtavlJ = document.getElementById("gtavlJ");
-      var rdr2l = document.getElementById("rdr2l");
-      var rdr2lJ = document.getElementById("rdr2lJ");
-    
-      linuxl.onclick = function() {
-        plmenu.style.display = "none";
-        linuxl.style.display = "none";
-        gtavl.style.display = "none";
-        rdr2l.style.display = "none";
-        linuxlJ.style.display = "unset";
-        GBl.style.display = "unset";
-        
-      }
-      gtavl.onclick = function() {
-        plmenu.style.display = "none";
-        linuxl.style.display = "none";
-        gtavl.style.display = "none";
-        rdr2l.style.display = "none";
-        gtavlJ.style.display = "unset";
-        GBl.style.display = "unset";
-        
-      }
-      rdr2l.onclick = function() {
-        plmenu.style.display = "none";
-        linuxl.style.display = "none";
-        gtavl.style.display = "none";
-        rdr2l.style.display = "none";
-        rdr2lJ.style.display = "unset";
-        GBl.style.display = "unset";
-        
-      }
-      GBl.onclick = function() {
-        plmenu.style.display = "unset";
-        linuxl.style.display = "unset"
-        gtavl.style.display = "unset"
-        rdr2l.style.display = "unset"
-        linuxlJ.style.display = "none";
-        gtavlJ.style.display = "none";
-        rdr2lJ.style.display = "none";
-        GBl.style.display = "none";
-      }
-      
-      
-      </script>
-
+<body style='background-color:#1A1920'>
+<h1 style='text-shadow: 4px 4px 4px black;font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;margin-top:1%;'>Pi Host with USB Emulation for FW 9.00</h1>
+<h1 id=progress style='font-size:25px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>Status</h1>
+<div id=all style="text-align:center;">
+<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:#CEC52A' > GoldHen</button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.3 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen23()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:#CEC52A' > GoldHen v2.3</button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Copy json and shn files from USB to PS4'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_copych()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Cheat Copy </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Binloader Port 9020 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Bloader()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > BinLoader </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Mira loader Port 9021 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Mloader()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > MiraLoader </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Mira Orbis for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Mira()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Mira </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='WebRTE for PS4 9.00 fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_WebRTE()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;background-color:blue;color:white' > WebRTE </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='ps4debug for PS4 9.00 fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_PS4Debug()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;background-color:green;color:white' > Ps4debug </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Orbis Toolbox Loader Alfa 1190 for PS4 9.00 fw'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Orbis()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;background-color:red;color:white' > Orbis Toolbox </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='A full access FTP server for the PS4'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_FTP()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > FTP </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Move installed games to an external USB drive'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_App2USB()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > App2USB </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='unlocks some debug features available on testkit'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_ToDexE()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > ToDex Enable </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Disable ToDEX'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_ToDexD()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > ToDex Disable </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Creates dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_DisableUpdates()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' >Disable Updates</button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Removes the dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_EnableUpdates()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Enable Update </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Disable the auto opening of the last page used in the PS4 WebBrowser'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_HistoryBlocker()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > History Blocker </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Enable Browser'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_EnableBrowser()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Enable Browser </button>
+<br><br>
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;width: 230px;color:white' class="pointer" onMouseOver="progress.innerHTML='All Dumper payloads'" onmouseout="progress.innerHTML='Status'" onclick="alldumpers(); return false"> Dumper Group</button>
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;width: 230px;color:white' class="pointer" onMouseOver="progress.innerHTML='All Linux payloads'" onmouseout="progress.innerHTML='Status'" onclick="alllinux(); return false"> Linux Group </button>
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;width: 230px;color:white' class="pointer" onMouseOver="progress.innerHTML='All Tools payloads'" onmouseout="progress.innerHTML='Status'" onclick="alltools(); return false"> Tools Group </button>
+<br><br>
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;width: 350px;height: 45px;color:white' class="pointer" onMouseOver="progress.innerHTML='All Mods Gtav & RDR2 payloads'" onmouseout="progress.innerHTML='Status'" onclick="allmods(); return false"> GTAV & RDR2 Mods Group </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Set the desired temperature that the PS4 fan starts'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_fan()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Fan Control </button><select style='font-size:20px;text-align:center;color:black' id="tempC"></select><a style='font-size:17px;text-align:center;color:white;'>&#176;C</a>
+<br>
+</div>
+<div id=gtav style="text-align:center;display:none">
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="pointer" onMouseOver="progress.innerHTML='back to base menu'" onmouseout="progress.innerHTML='Pi Host 9.00 fw'" onclick="backall(); return false"> Back to Menu </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.00 by Karo for 900 L1+R1'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTAAr0()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV A100 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.27 by rfoodxmodz  fixed by Karo for 900 ==> + [] '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTAAr1()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV A127 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.32 by rfoodxmodz fixed by Karo for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTAAr2()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV A132 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.33 by rfoodxmodz for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTAAr3()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV A133 </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV BeefQueefMod 1.33 by GraFfix_221211 for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTABQ()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV BQ </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV BeefQueefMod 1.34 by GraFfix_221211 for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTABQ2()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV BQ2 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV BeefQueefMod 1.38 by GraFfix_221211 for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTABQ3()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV BQ3 </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV Menu-Base 1.27 Ported by Karo for 900 ==> + []'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTAVMB()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV MB127 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV LTS 1.27 Ported by Karo for 900 ==> + []'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTAVLTS()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV LTS127 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV Expulsion Mode Menu 1.35 by LushModz for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_expul()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV Ex135 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV Expulsion Mode Menu 1.38 V4.0 by LushModz for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_expul2()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV Ex138 </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.32 v1.1 by x_WildeModz_x for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Wilde32()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV W132 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.33 v1.1 by x_WildeModz_x for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Wilde33()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV W133 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.38 v1.7 by x_WildeModz_x for 900 '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Wilde38()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > GTAV W138 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='GTAV Lamance Mod 1.38 v0.9 by david1337hax '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_GTAL()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' >GTAV Lamance</button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.00 V1.3.6 by RF0oDxM0Dz (R1 + Square) '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Oysters100()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:red' > RDR2 V1.00 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.13 V1.3.6 by RF0oDxM0Dz (R1 + Square) '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Oysters113()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:red' > RDR2 V1.13 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.19 V1.3.6 by RF0oDxM0Dz (R1 + Square) '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Oysters119()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:red' > RDR2 V1.19 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.24 V1.3.6 by RF0oDxM0Dz (R1 + Square) '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Oysters124()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:red' > RDR2 V1.24 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.29 V1.3.6 by RF0oDxM0Dz (R1 + Square) '" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Oysters129()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:red' > RDR2 V1.29 </button>
+<br><br><br></div>
+<div id=Linuxs style="text-align:center;display:none">
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="pointer" onMouseOver="progress.innerHTML='back to base menu'" onmouseout="progress.innerHTML='Pi Host 9.00 fw'" onclick="backall(); return false"> Back to Menu </button>
+<br><br>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 1gb by PSXITA'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux1N()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux PSXITA 1GB</button>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 2gb by PSXITA'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux2N()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux PSXITA 2GB</button>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 3gb by PSXITA'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux3N()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux PSXITA 3GB</button>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 4gb by PSXITA'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux4N()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux PSXITA 4GB</button>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 5gb by PSXITA'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux5N()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux PSXITA 5GB</button>
+<br><br>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 1gb by Nazky'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux1()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 1GB</button>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 2gb by Nazky'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux2()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 2GB</button>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 3gb by Nazky'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux3()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 3GB</button>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 4gb by Nazky'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux4()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 4GB</button>
+<button  onMouseOver="progress.innerHTML='LinuxLoader 5gb by Nazky'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux5()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 5GB</button>
+<br><br>
+<button  onMouseOver="progress.innerHTML='Whos That Southbridge'" onmouseout="progress.innerHTML='Status'" type="button" onclick="Linux6()" style='width: 300px;height: 50px;font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Whos_That_Southbridge</button>
+<br><br><br>
+</div>
+<div id=Tools style="text-align:center;display:none">
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="pointer" onMouseOver="progress.innerHTML='back to base menu'" onmouseout="progress.innerHTML='Pi Host 9.00 fw'" onclick="backall(); return false"> Back to Menu </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Create a backup of important database files ans User Data'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_BackupDB()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > DB Backup </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Restore a backup of the database files and User Data'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_RestoreDB()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > DB Restore </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Disable IDU Mode'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_ExitIDU()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Exit IDU </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Rif Renamer'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_RIFRenamer()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Rif renamer </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='permanentuart'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_permanentuart()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > permanent uart </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='disable aslr'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_DisableASLR()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Disable Aslr </button>
+<br><br><br>
+</div>
+<div id=Dumpers style="text-align:center;display:none">
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="pointer" onMouseOver="progress.innerHTML='back to base menu'" onmouseout="progress.innerHTML='Pi Host 9.00 fw'" onclick="backall(); return false"> Back to Menu </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='PS4 PKG Backup by Kameleon'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_pkgb()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > PKG Backup </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Games only to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_DumperG()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Dumper Game </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Games Update only to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_DumperU()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Dumper Update </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Merged Games and Update to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_DumperMGU()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Dumper MGU </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Seperate Games and Update to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_DumperSGU()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Dumper SGU </button>
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='kernel dumper'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_KernelDumper()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Kernel Dumper </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='module dumper'" onmouseout="progress.innerHTML='Status'" type="button" onclick="load_ModuleDumper()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Module Dumper </button>
+<br><br><br>
+</div>
+<br><br><br><br><br>
 <script>
+localStorage.setItem('fanthreshold', tempC.value);
+for(var i=50; i<=80; i=i+5){
+    var select = document.getElementById("tempC");
+    var option = document.createElement("OPTION");
+	select.options.add(option);
+	option.text = i;
+	option.value = i;
+}
+tempC.value=60;
 
-//MODDED BY HIPPIE BZIP2.JS
 var bzip2 = {};
 
 bzip2.array = function(bytes) {
@@ -1786,8 +1162,7 @@ bzip2.decompress = function(bits, size, len) {
   }
   return output;
 };
-
 </script>
-    
 </body>
+
 </html>

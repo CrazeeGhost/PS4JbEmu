@@ -11,10 +11,10 @@ if ($_POST['value'] == "LoadUSB"){
 }
 
 if ($_POST['value'] == "Reboot"){ 
-	shell_exec('sudo reboot' );
+	shell_exec('sudo reboot');
 }
 
 if ($_POST['value'] == "Shutdown"){ 
-	shell_exec('sudo shutdown -h now' );
+	shell_exec('sudo shutdown -h now');
 }
 ?>
