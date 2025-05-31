@@ -44,7 +44,6 @@ Auto PPPwn jailbreak for Sony PlayStation 4 consoles running software veriosns 9
 - This is the pppwn_cpp Jailbreak for PS4 running software versions in the title of the release only
 - Tested on Raspberry Pi 3 Model B and Raspberry Pi 4
 - After the first successful load of GoldHEN, you do not need to repeat steps 8 through 10 for subsequent runs on the same PS4
-- Auto updates the pppwn_cpp exploit binary at device boot (if internet available)
 - If  `POSTJB=pppoe` config is set, PS4 can access internet if Pi is connected to WiFi and only after successful Jailbreak. Your PS4 may try updating it's system software in this setup. You have been warned.
 - No need to restart Pi if Re-Jailbreaking after PS4 was shutdown/restarted (PS4 must have stayed off for at least 30 seconds)
 - Handles exceptions when PS4 crashes during exploit or if the exploit itself halts or hangs
