@@ -34,11 +34,16 @@ Auto PPPwn jailbreak for Sony PlayStation 4 consoles running software veriosns 9
 5. Optional - To update the pppwn binary or stage1/stage2 payloads, replace the files in `/boot/pppwn-cpp/` with newer versions, maintaining the original filenames.
 6. Insert the micro SD card into a Raspberry Pi
 7. Optional - Connect the Pi to your WiFi (easiest using `sudo raspi-config`). Then power if off.
-8. Download and extract [SiSTR0's GoldHEN v2.4b18.3](https://ko-fi.com/s/39f14f8d18)
-9. Copy `goldhen.bin` to the root of an exFAT formatted USB drive
-10. Plug the USB Drive into a USB port on your PS4
-11. Connect the Pi to your PS4 via an Ethernet cable and power on both devices.
-12. Wait for notifications confirming GoldHEN was loaded. This should happen within 2-3 minutes depending on how many attempts are required for that instance. If nothing happens within 5 minutes of boot up, I recommend restarting both the Raspberry Pi and the PS4. 
+   
+   SSH username: `pi`
+   
+   SSH password: `pppwn`
+   
+9. Download and extract [SiSTR0's GoldHEN v2.4b18.3](https://ko-fi.com/s/39f14f8d18)
+10. Copy `goldhen.bin` to the root of an exFAT formatted USB drive
+11. Plug the USB Drive into a USB port on your PS4
+12. Connect the Pi to your PS4 via an Ethernet cable and power on both devices.
+13. Wait for notifications confirming GoldHEN was loaded. This should happen within 2-3 minutes depending on how many attempts are required for that instance. If nothing happens within 5 minutes of boot up, I recommend restarting both the Raspberry Pi and the PS4. 
 
 ## Notes
 - This is the pppwn_cpp Jailbreak for PS4 running software versions in the title of the release only
